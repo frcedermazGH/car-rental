@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="login-container">
+        <form class="login-form" action="{{ path('app_login') }}" method="post">
+            <h2 class="title">Iniciar sesión</h2>
+            <label for="username" class="label">Email:</label>
+            <input type="text" class="input" required id="username" name="_username" value="{{ last_username }}"/>
+            <label for="password" class="label" required>Password:</label>
+            <input type="password" class="input" id="password" name="_password"/>
+            <button class="submit-button" type="submit">Ingresar</button>
+            <p class="register">Registrarse</p>
+
+            {% if error %}
+                <div class="error">Usuario o contraseña incorrecta</div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
